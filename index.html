@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Wine Guide — Teahouse</title>
+<style>
+  :root{
+    --ink:#2b2520; --muted:#7a6f64; --line:#e6ded2; --bg:#fbf8f3;
+    --card:#ffffff; --gold:#b08a3e; --red:#8c3b3b; --white:#9a8a55;
+    --good:#3f7d55; --mid:#c08a2e; --soft:#f4eee3;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;line-height:1.55;
+    -webkit-font-smoothing:antialiased;padding:0 0 60px;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px;}
+  header{text-align:center;padding:44px 22px 26px;border-bottom:1px solid var(--line);}
+  header .kicker{letter-spacing:.28em;text-transform:uppercase;font-size:12px;color:var(--gold);margin-bottom:10px;}
+  header h1{font-size:30px;margin:0 0 8px;font-weight:600;}
+  header p{color:var(--muted);margin:6px auto 0;max-width:640px;font-size:15px;}
+  h2{font-size:20px;margin:38px 0 6px;font-weight:600;display:flex;align-items:center;gap:10px;}
+  h2 .dot{width:11px;height:11px;border-radius:50%;display:inline-block;}
+  .sub{color:var(--muted);font-size:14px;margin:0 0 16px;}
+  .dishes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px;}
+  .dish{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;}
+  .dish h3{margin:0 0 4px;font-size:16px;}
+  .dish .tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);}
+  .dish p{margin:8px 0 0;font-size:13.5px;color:var(--muted);}
+  .dish .want{margin-top:10px;font-size:13.5px;color:var(--ink);}
+  .dish .want b{color:var(--ink);}
+  .legend{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-top:26px;font-size:13.5px;color:var(--muted);}
+  .legend b{color:var(--ink);}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);
+    border-radius:12px;overflow:hidden;font-size:13px;margin-top:4px;}
+  th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);}
+  th{background:var(--soft);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap;}
+  td.wine{font-weight:600;white-space:nowrap;}
+  td .region{display:block;font-weight:400;color:var(--muted);font-size:11.5px;margin-top:2px;}
+  tr:last-child td{border-bottom:none;}
+  .pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap;}
+  .p-good{background:#e7f2ea;color:var(--good);}
+  .p-mid{background:#f8efdc;color:#a9761f;}
+  .p-low{background:#f1ece4;color:var(--muted);}
+  .price{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--muted);}
+  .bar{display:inline-block;height:7px;border-radius:4px;background:var(--gold);vertical-align:middle;}
+  .barbg{display:inline-block;width:52px;height:7px;border-radius:4px;background:#eee4d3;vertical-align:middle;position:relative;}
+  .barbg .bar{position:absolute;left:0;top:0;}
+  .scaleword{font-size:11px;color:var(--muted);margin-left:6px;vertical-align:middle;}
+  .pick{background:linear-gradient(180deg,#fffdf8,#fbf5e9);border:1px solid #e7d3a3;border-radius:12px;padding:18px 20px;margin-top:18px;}
+  .pick h4{margin:0 0 4px;font-size:15px;color:var(--gold);letter-spacing:.02em;}
+  .pick .name{font-size:17px;font-weight:600;}
+  .pick p{margin:8px 0 0;font-size:13.5px;color:#5f574c;}
+  .alt{font-size:13px;color:var(--muted);margin-top:10px;}
+  .alt b{color:var(--ink);}
+  .note{font-size:12px;color:var(--muted);margin-top:8px;font-style:italic;}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:44px;padding-top:20px;border-top:1px solid var(--line);}
+  @media(max-width:720px){
+    .dishes{grid-template-columns:1fr;}
+    .scroll{overflow-x:auto;}
+    table{min-width:640px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">The Teahouse · Wedding Dinner</div>
+  <h1>Choosing Your Wines</h1>
+  <p>A neutral side-by-side of every wine on the list, scored for how well it fits your two Gold-menu dishes and how much a big, mixed room of guests will enjoy it. Pick one white and one red — the shortlists at the end make it easy.</p>
+</header>
+
+<div class="wrap">
+
+  <div class="dishes">
+    <div class="dish">
+      <span class="tag">White pairs with →</span>
+      <h3>Sablefish &amp; Prawns</h3>
+      <p>Sablefish (black cod) is a rich, buttery, silky fish; sweet prawns alongside. The <b>miso marinade</b> adds a savoury, lightly sweet, umami glaze.</p>
+      <p class="want"><b>Wants:</b> a white with some body and texture to match the richness, plus fresh acidity to keep it lively. Aromatic and lightly-oaked styles love miso.</p>
+    </div>
+    <div class="dish">
+      <span class="tag">Red pairs with →</span>
+      <h3>Charbroiled Rack of Lamb</h3>
+      <p>Cooked medium, char off the grill, finished with a savoury <b>demi-glace</b>. A classic, hearty red-meat plate.</p>
+      <p class="want"><b>Wants:</b> a medium-to-full red with enough structure to stand up to the meat, but smooth enough tannin that casual drinkers still enjoy it.</p>
+    </div>
+  </div>
+
+  <div class="legend">
+    <b>How to read the tables.</b> &nbsp;<b>Sweetness</b> and <b>Body</b> run left (dry / light) to right (sweeter / fuller). <b>Tannin</b> (reds) is that drying, grippy feel — higher can taste harsh to newcomers. <b>Crowd-appeal</b> is how broadly a room of mixed guests tends to like it: <span class="pill p-good">Wide</span> almost everyone, <span class="pill p-mid">Mixed</span> loved by many but divides some, <span class="pill p-low">Niche</span> for keen drinkers. <b>Fit</b> is the pairing match with your dish. Price is per bottle (pre-tax/service), straight from the list.
+  </div>
+
+  <!-- WHITES -->
+  <h2><span class="dot" style="background:var(--white)"></span>White Wines — for the Sablefish &amp; Prawns</h2>
+  <p class="sub">Ordered roughly light &amp; crisp at the top to rich &amp; full at the bottom.</p>
+  <div class="scroll">
+  <table>
+    <thead><tr>
+      <th>Wine</th><th>Style</th><th>Tastes like</th><th>Sweetness</th><th>Body</th><th>Crowd</th><th>Fit w/ sablefish</th><th>Price</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td class="wine">Decorato Pinot Grigio<span class="region">Italy</span></td>
+        <td>Light Italian white</td>
+        <td>Clean, easy, green apple &amp; pear; crisp finish</td>
+        <td><span class="barbg"><span class="bar" style="width:8px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:14px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-mid">OK — a touch light for the rich fish</span></td>
+        <td class="price">$44</td>
+      </tr>
+      <tr>
+        <td class="wine">Lurton Les Fumées Blanches<span class="region">Sauv. Blanc · France</span></td>
+        <td>Crisp, zesty white</td>
+        <td>Citrus, fresh-cut grass, bright and lean</td>
+        <td><span class="barbg"><span class="bar" style="width:7px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:16px"></span></span></td>
+        <td><span class="pill p-mid">Mixed</span></td>
+        <td><span class="pill p-mid">Cuts richness, but can read green vs. miso</span></td>
+        <td class="price">$51</td>
+      </tr>
+      <tr>
+        <td class="wine">Oyster Bay Sauv. Blanc<span class="region">New Zealand</span></td>
+        <td>Zesty, aromatic white</td>
+        <td>Punchy passionfruit, lime, herbaceous</td>
+        <td><span class="barbg"><span class="bar" style="width:9px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:17px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-mid">Refreshing; zing slightly fights the glaze</span></td>
+        <td class="price">$55</td>
+      </tr>
+      <tr>
+        <td class="wine">Mission Hill Reserve Sauv. Blanc<span class="region">BC</span></td>
+        <td>Crisp local white</td>
+        <td>Citrus, gooseberry, clean and fresh</td>
+        <td><span class="barbg"><span class="bar" style="width:8px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:17px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-mid">Pleasant; leaner side for sablefish</span></td>
+        <td class="price">$62</td>
+      </tr>
+      <tr>
+        <td class="wine">Chateau La Rabotine Sancerre<span class="region">Sauv. Blanc · France</span></td>
+        <td>Premium mineral white</td>
+        <td>Flinty, citrus, elegant and precise</td>
+        <td><span class="barbg"><span class="bar" style="width:7px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:20px"></span></span></td>
+        <td><span class="pill p-mid">Mixed</span></td>
+        <td><span class="pill p-good">Lovely — but a splurge for a crowd</span></td>
+        <td class="price">$90</td>
+      </tr>
+      <tr>
+        <td class="wine">Blue Mountain Pinot Blanc<span class="region">BC</span></td>
+        <td>Crisp, elegant white</td>
+        <td>Green apple, almond, subtle and refined</td>
+        <td><span class="barbg"><span class="bar" style="width:9px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:22px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Good — clean but with a bit more depth</span></td>
+        <td class="price">$67</td>
+      </tr>
+      <tr>
+        <td class="wine">Poplar Grove Pinot Gris<span class="region">BC</span></td>
+        <td>Textured local white</td>
+        <td>Pear, stone fruit, gently rounded</td>
+        <td><span class="barbg"><span class="bar" style="width:11px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:26px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Strong — body &amp; freshness in balance</span></td>
+        <td class="price">$55</td>
+      </tr>
+      <tr>
+        <td class="wine">CedarCreek Pinot Gris<span class="region">BC</span></td>
+        <td>Textured local white</td>
+        <td>Ripe pear, melon, soft and juicy</td>
+        <td><span class="barbg"><span class="bar" style="width:12px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:28px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Strong — flatters the rich fish</span></td>
+        <td class="price">$59</td>
+      </tr>
+      <tr>
+        <td class="wine">Burrowing Owl Pinot Gris<span class="region">BC</span></td>
+        <td>Richer local white</td>
+        <td>Pear, spice, fuller and generous</td>
+        <td><span class="barbg"><span class="bar" style="width:12px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:31px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Excellent — body matches the sablefish</span></td>
+        <td class="price">$67</td>
+      </tr>
+      <tr>
+        <td class="wine">Ken Forrester Chenin Blanc<span class="region">South Africa</span></td>
+        <td>Versatile, honeyed white</td>
+        <td>Quince, apple, a whisper of honey, fresh acidity</td>
+        <td><span class="barbg"><span class="bar" style="width:13px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:29px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Excellent — texture + acid loves miso</span></td>
+        <td class="price">$59</td>
+      </tr>
+      <tr>
+        <td class="wine">Joie A Noble Blend<span class="region">BC</span></td>
+        <td>Aromatic off-dry blend</td>
+        <td>Floral, lychee, peach; a hint of sweetness</td>
+        <td><span class="barbg"><span class="bar" style="width:24px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:28px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Excellent — aromatics + miso are magic</span></td>
+        <td class="price">$67</td>
+      </tr>
+      <tr>
+        <td class="wine">Mission Hill Reserve Chardonnay<span class="region">BC</span></td>
+        <td>Lightly-oaked Chardonnay</td>
+        <td>Orchard fruit, subtle vanilla, rounded</td>
+        <td><span class="barbg"><span class="bar" style="width:11px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:34px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Excellent — classic with buttery fish</span></td>
+        <td class="price">$66</td>
+      </tr>
+      <tr>
+        <td class="wine">William Fevre Petite Chablis<span class="region">Chardonnay · France</span></td>
+        <td>Unoaked, mineral Chardonnay</td>
+        <td>Crisp green apple, oyster-shell, pure</td>
+        <td><span class="barbg"><span class="bar" style="width:8px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:30px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Excellent — textbook seafood match</span></td>
+        <td class="price">$90</td>
+      </tr>
+      <tr>
+        <td class="wine">Burrowing Owl Chardonnay<span class="region">BC</span></td>
+        <td>Fuller, oaked Chardonnay</td>
+        <td>Ripe apple, toast, creamy</td>
+        <td><span class="barbg"><span class="bar" style="width:12px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:40px"></span></span></td>
+        <td><span class="pill p-mid">Mixed</span></td>
+        <td><span class="pill p-good">Good — rich; oak divides some guests</span></td>
+        <td class="price">$72</td>
+      </tr>
+      <tr>
+        <td class="wine">La Crema Chardonnay<span class="region">California</span></td>
+        <td>Rich, creamy Chardonnay</td>
+        <td>Ripe pear, butter, vanilla oak</td>
+        <td><span class="barbg"><span class="bar" style="width:13px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:44px"></span></span></td>
+        <td><span class="pill p-mid">Mixed</span></td>
+        <td><span class="pill p-mid">Rich enough, but polarizing oak</span></td>
+        <td class="price">$66</td>
+      </tr>
+      <tr>
+        <td class="wine">Rodney Strong Chardonnay<span class="region">California</span></td>
+        <td>Rich, creamy Chardonnay</td>
+        <td>Tropical fruit, butter, toasty</td>
+        <td><span class="barbg"><span class="bar" style="width:13px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:45px"></span></span></td>
+        <td><span class="pill p-mid">Mixed</span></td>
+        <td><span class="pill p-mid">Rich enough, but polarizing oak</span></td>
+        <td class="price">$74</td>
+      </tr>
+      <tr>
+        <td class="wine">Premium Chablis<span class="region">for the splurge shortlist</span></td>
+        <td colspan="6" style="color:var(--muted);font-style:italic">Domaine Drouhin Chablis, France, $124 — a premium unoaked Chardonnay in the same lovely-but-splurge camp as the William Fevre Petite Chablis above.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="pick">
+    <h4>★ Easy white pick for a wedding</h4>
+    <div class="name">CedarCreek Pinot Gris ($59) &nbsp;·&nbsp; or Ken Forrester Chenin Blanc ($59)</div>
+    <p>Both have enough body to sit beside the rich sablefish, keep a fresh streak so they don't feel heavy, and are the kind of easy-drinking whites almost nobody dislikes. Great value in the middle of the list.</p>
+    <div class="alt"><b>Want a touch more special?</b> Mission Hill Reserve Chardonnay ($66) is the safe crowd-Chardonnay, or the Joie Noble Blend ($67) is a delicious aromatic wildcard that's spectacular with miso (just slightly off-dry, so taste it first). <b>Splurge:</b> William Fevre Petite Chablis ($90).</div>
+    <div class="note">Steer clear if you want zero risk: the big California Chardonnays (La Crema, Rodney Strong) — lovely to some, "too buttery" to others.</div>
+  </div>
+
+  <!-- REDS -->
+  <h2><span class="dot" style="background:var(--red)"></span>Red Wines — for the Rack of Lamb</h2>
+  <p class="sub">Ordered roughly soft &amp; smooth at the top to structured &amp; firm at the bottom. Only the reds most relevant to lamb + a crowd are called out; the very tannic/premium bottles sit at the end.</p>
+  <div class="scroll">
+  <table>
+    <thead><tr>
+      <th>Wine</th><th>Style</th><th>Tastes like</th><th>Body</th><th>Tannin</th><th>Crowd</th><th>Fit w/ lamb</th><th>Price</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td class="wine">Five Vineyards Cabernet Merlot<span class="region">BC</span></td>
+        <td>Smooth everyday blend</td>
+        <td>Plum, blackberry, easy and round</td>
+        <td><span class="barbg"><span class="bar" style="width:30px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:20px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-mid">Fine &amp; safe; a little simple for lamb</span></td>
+        <td class="price">$51</td>
+      </tr>
+      <tr>
+        <td class="wine">Rodney Strong Merlot<span class="region">California</span></td>
+        <td>Plush, smooth Merlot</td>
+        <td>Ripe plum, cocoa, soft finish</td>
+        <td><span class="barbg"><span class="bar" style="width:33px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:20px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Good — crowd-safe, easy with the meat</span></td>
+        <td class="price">$60</td>
+      </tr>
+      <tr>
+        <td class="wine">Mission Hill Reserve Merlot<span class="region">BC</span></td>
+        <td>Plush, smooth Merlot</td>
+        <td>Black cherry, plum, velvety</td>
+        <td><span class="barbg"><span class="bar" style="width:35px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:23px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Strong — soft, rich, universally liked</span></td>
+        <td class="price">$74</td>
+      </tr>
+      <tr>
+        <td class="wine">Quails' Gate Pinot Noir<span class="region">BC</span></td>
+        <td>Silky light red</td>
+        <td>Red cherry, raspberry, earthy, gentle</td>
+        <td><span class="barbg"><span class="bar" style="width:24px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:16px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-mid">Elegant, but light for charred lamb</span></td>
+        <td class="price">$79</td>
+      </tr>
+      <tr>
+        <td class="wine">CedarCreek Pinot Noir<span class="region">BC</span></td>
+        <td>Silky light red</td>
+        <td>Cherry, cranberry, soft and fresh</td>
+        <td><span class="barbg"><span class="bar" style="width:24px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:16px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-mid">Crowd-friendly, but light for lamb</span></td>
+        <td class="price">$64</td>
+      </tr>
+      <tr>
+        <td class="wine">Tommasi "Ripasso" Valpolicella<span class="region">Italy</span></td>
+        <td>Rich, smooth Italian red</td>
+        <td>Dried cherry, warm spice, plush</td>
+        <td><span class="barbg"><span class="bar" style="width:38px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:26px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Excellent — rich &amp; friendly with lamb</span></td>
+        <td class="price">$81</td>
+      </tr>
+      <tr>
+        <td class="wine">E. Guigal Côtes du Rhône<span class="region">France</span></td>
+        <td>Classic Rhône blend</td>
+        <td>Blackberry, black pepper, savoury herbs</td>
+        <td><span class="barbg"><span class="bar" style="width:38px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:28px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Excellent — a benchmark lamb pairing</span></td>
+        <td class="price">$62</td>
+      </tr>
+      <tr>
+        <td class="wine">Domaine Bousquet Malbec<span class="region">Argentina</span></td>
+        <td>Juicy, dark Malbec</td>
+        <td>Blackberry, plum, smooth and value</td>
+        <td><span class="barbg"><span class="bar" style="width:38px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:28px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Great — grilled lamb loves Malbec</span></td>
+        <td class="price">$49</td>
+      </tr>
+      <tr>
+        <td class="wine">Catena Malbec<span class="region">Argentina</span></td>
+        <td>Polished, dark Malbec</td>
+        <td>Black plum, violet, mocha; smooth</td>
+        <td><span class="barbg"><span class="bar" style="width:42px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:30px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Excellent — crowd favourite w/ grilled lamb</span></td>
+        <td class="price">$69</td>
+      </tr>
+      <tr>
+        <td class="wine">Villa Antinori Red IGT<span class="region">Tuscany · Italy</span></td>
+        <td>Elegant Tuscan blend</td>
+        <td>Cherry, dried herb, refined savoury edge</td>
+        <td><span class="barbg"><span class="bar" style="width:40px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:32px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Excellent — savoury match, food wine</span></td>
+        <td class="price">$81</td>
+      </tr>
+      <tr>
+        <td class="wine">Cedar Creek Meritage<span class="region">BC</span></td>
+        <td>Bordeaux-style blend</td>
+        <td>Blackcurrant, plum, cedar, balanced</td>
+        <td><span class="barbg"><span class="bar" style="width:40px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:33px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Excellent — classic red-meat blend, value</span></td>
+        <td class="price">$69</td>
+      </tr>
+      <tr>
+        <td class="wine">Blasted Church Syrah<span class="region">BC</span></td>
+        <td>Peppery, full Syrah</td>
+        <td>Blackberry, black pepper, smoky</td>
+        <td><span class="barbg"><span class="bar" style="width:43px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:36px"></span></span></td>
+        <td><span class="pill p-mid">Mixed</span></td>
+        <td><span class="pill p-good">Great — Syrah &amp; lamb are a classic</span></td>
+        <td class="price">$74</td>
+      </tr>
+      <tr>
+        <td class="wine">Mission Hill Reserve Syrah<span class="region">BC</span></td>
+        <td>Peppery, full Syrah</td>
+        <td>Dark fruit, pepper, meaty depth</td>
+        <td><span class="barbg"><span class="bar" style="width:44px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:37px"></span></span></td>
+        <td><span class="pill p-mid">Mixed</span></td>
+        <td><span class="pill p-good">Great — bold, made for grilled lamb</span></td>
+        <td class="price">$86</td>
+      </tr>
+      <tr>
+        <td class="wine">Chaberton Cabernet Sauvignon<span class="region">BC</span></td>
+        <td>Structured Cabernet</td>
+        <td>Blackcurrant, cedar, firm grip</td>
+        <td><span class="barbg"><span class="bar" style="width:44px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:42px"></span></span></td>
+        <td><span class="pill p-mid">Mixed</span></td>
+        <td><span class="pill p-good">Great — but firmer tannin for casual guests</span></td>
+        <td class="price">$79</td>
+      </tr>
+      <tr>
+        <td class="wine">Barossa Valley Shiraz<span class="region">Australia</span></td>
+        <td>Bold, ripe Shiraz</td>
+        <td>Jammy blackberry, licorice, warming</td>
+        <td><span class="barbg"><span class="bar" style="width:45px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:36px"></span></span></td>
+        <td><span class="pill p-mid">Mixed</span></td>
+        <td><span class="pill p-good">Great pairing; big &amp; ripe divides some</span></td>
+        <td class="price">$62</td>
+      </tr>
+      <tr>
+        <td class="wine">Cline Zinfandel<span class="region">California</span></td>
+        <td>Jammy, ripe red</td>
+        <td>Bramble jam, spice, sweet-fruited</td>
+        <td><span class="barbg"><span class="bar" style="width:43px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:32px"></span></span></td>
+        <td><span class="pill p-mid">Mixed</span></td>
+        <td><span class="pill p-mid">Works, but jammy style isn't for everyone</span></td>
+        <td class="price">$65</td>
+      </tr>
+      <tr>
+        <td class="wine">Burrowing Owl Merlot<span class="region">BC</span></td>
+        <td>Rich, structured Merlot</td>
+        <td>Dark plum, chocolate, fuller-bodied</td>
+        <td><span class="barbg"><span class="bar" style="width:42px"></span></span></td>
+        <td><span class="barbg"><span class="bar" style="width:34px"></span></span></td>
+        <td><span class="pill p-good">Wide</span></td>
+        <td><span class="pill p-good">Great — plush yet substantial</span></td>
+        <td class="price">$79</td>
+      </tr>
+      <tr>
+        <td class="wine">Firmer &amp; premium options<span class="region">for keen wine drinkers</span></td>
+        <td colspan="6" style="color:var(--muted);font-style:italic">Barolo &amp; Nebbiolo (Fontanafredda $115, Giovanni Rosso $78), Brunello di Montalcino ($128), Seghesio Zin ($92), and the big Cabernets (Burrowing Owl $106, Burrowing Owl Cab Franc $89, Freemark Abbey $181) are excellent with lamb but tend to be tannic, pricey, or both — better for a wine-savvy crowd than a broad room. Mollydooker "The Boxer" Shiraz ($88) is delicious but very big/high-alcohol and polarizing.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="pick">
+    <h4>★ Easy red pick for a wedding</h4>
+    <div class="name">Catena Malbec ($69) &nbsp;·&nbsp; or E. Guigal Côtes du Rhône ($62)</div>
+    <p>Both are medium-full, smooth, and savoury — genuinely made for grilled lamb — yet soft enough that guests who "don't usually drink red" will happily finish a glass. The Guigal is also one of the best values on the whole list.</p>
+    <div class="alt"><b>Prefer the softest, safest option?</b> Mission Hill Reserve Merlot ($74) or Rodney Strong Merlot ($60) — plush and almost impossible to dislike. <b>More elegant/savoury:</b> Villa Antinori ($81) or Cedar Creek Meritage ($69). <b>Bolder, if your crowd likes big reds:</b> Mission Hill Reserve Syrah ($86).</div>
+    <div class="note">Save the Barolo, Brunello and big Cabernets for a dinner with fewer, keener wine drinkers — their firm tannins can taste harsh to casual guests.</div>
+  </div>
+
+  <footer>
+    Built from the Teahouse Gold dinner menu (p.11) and beverage list (p.17). Pairing and crowd-appeal notes are general guidance — if the venue offers a tasting, trust your own palates over any chart. Prices exclude the 18% service charge, 5% GST &amp; 10% liquor tax.
+  </footer>
+
+</div>
+</body>
+</html>
